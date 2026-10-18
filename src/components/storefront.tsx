@@ -214,9 +214,7 @@ export function Storefront({ products }: StorefrontProps) {
                     setErrors((current) => {
                       const next = { ...current };
                       delete next[field];
-                      if (field !== "cart") {
-                        delete next.cart;
-                      }
+                      delete next.cart;
                       return next;
                     });
                   }}
