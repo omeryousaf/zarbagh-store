@@ -174,10 +174,10 @@ export function Storefront({ products }: StorefrontProps) {
 
         <aside
           id="order"
-          className="bg-grove-wash px-6 py-10 sm:px-8 lg:px-6"
+          className="bg-background px-6 py-10 sm:px-8 lg:px-6"
         >
           <div className="flex flex-col gap-4 lg:sticky lg:top-20">
-          <Card>
+          <Card className="bg-paper">
             <CardHeader>
               <CardTitle>Your cart</CardTitle>
               <CardDescription>
@@ -197,7 +197,7 @@ export function Storefront({ products }: StorefrontProps) {
             </CardContent>
           </Card>
 
-          <Card>
+          <Card className="bg-paper">
             <CardHeader>
               <CardTitle>{order ? "Order received" : "Checkout"}</CardTitle>
               <CardDescription>
@@ -236,7 +236,7 @@ export function Storefront({ products }: StorefrontProps) {
       <SiteFooter />
 
       {itemCount > 0 && !order ? (
-        <div className="sticky bottom-0 z-20 border-t border-border/80 bg-citrus-wash p-3 lg:hidden">
+        <div className="sticky bottom-0 z-20 border-t border-border/80 bg-background p-3 lg:hidden">
           <Button className="w-full" size="lg" asChild>
             <a href="#order">
               Checkout · {itemCount} · {formatPkr(total)}

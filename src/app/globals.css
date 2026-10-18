@@ -41,9 +41,7 @@
   --color-card: var(--card);
   --color-grove: var(--grove);
   --color-grove-foreground: var(--grove-foreground);
-  --color-grove-wash: var(--grove-wash);
   --color-paper: var(--paper);
-  --color-citrus-wash: var(--citrus-wash);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -80,12 +78,10 @@
   --chart-4: oklch(0.78 0.1 85);
   --chart-5: oklch(0.4 0.07 40);
   --radius: 0.5rem;
-  /* Grove green is atmosphere only — foliage, not a second loud accent. */
+  /* Grove green is atmosphere only — foliage, not a section fill. */
   --grove: oklch(0.3 0.055 140);
   --grove-foreground: oklch(0.96 0.02 85);
-  --grove-wash: oklch(0.88 0.035 140);
   --paper: oklch(0.945 0.028 85);
-  --citrus-wash: oklch(0.93 0.04 55);
   --sidebar: oklch(0.88 0.035 82);
   --sidebar-foreground: oklch(0.28 0.05 50);
   --sidebar-primary: oklch(0.63 0.17 52);
@@ -122,9 +118,7 @@
   --chart-5: oklch(0.4 0.07 40);
   --grove: oklch(0.28 0.05 140);
   --grove-foreground: oklch(0.95 0.02 85);
-  --grove-wash: oklch(0.3 0.04 140);
   --paper: oklch(0.27 0.03 55);
-  --citrus-wash: oklch(0.3 0.04 55);
   --sidebar: oklch(0.25 0.03 55);
   --sidebar-foreground: oklch(0.95 0.02 85);
   --sidebar-primary: oklch(0.72 0.15 55);

@@ -76,7 +76,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section id="story" className="bg-grove-wash">
+      <section id="story" className="bg-paper">
         <div className="mx-auto grid w-full max-w-5xl gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:items-center lg:py-24">
           <div className="flex flex-col gap-4">
             <p className="text-sm text-muted-foreground">Our groves</p>
@@ -98,7 +98,7 @@ export function LandingPage() {
               stop.
             </p>
           </div>
-          <aside className="rounded-xl bg-paper p-6 sm:p-8">
+          <aside className="rounded-xl bg-background p-6 sm:p-8">
             <p className="text-lg font-medium tracking-tight">
               High juice, thin peel, a clean pull of the skin.
             </p>
@@ -111,7 +111,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-paper">
+      <section className="bg-background">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-20 sm:px-8">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -126,9 +126,9 @@ export function LandingPage() {
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {featuredProducts.map((product) => (
-              <Card key={product.id} className="h-full bg-background pt-0">
+              <Card key={product.id} className="h-full bg-paper pt-0">
                 <CrateGraphic
-                  className="border-b border-border/70 bg-background"
+                  className="border-b border-border/70 bg-paper"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <CardHeader>
@@ -157,7 +157,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-background">
+      <section className="bg-paper">
         <div className="mx-auto grid w-full max-w-5xl gap-10 px-6 py-20 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
           {values.map((value) => (
             <div key={value.title} className="flex flex-col gap-2">
@@ -170,7 +170,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="bg-citrus-wash px-6 py-16 sm:px-8">
+      <section className="bg-background px-6 py-16 sm:px-8">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-xl">
             <h2 className="text-3xl font-semibold tracking-tight">
