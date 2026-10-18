@@ -2,7 +2,6 @@ import { BadgeCheck, Leaf, MapPin, SunMedium } from "lucide-react";
 import Link from "next/link";
 
 import { CrateGraphic } from "@/components/crate-graphic";
-import { GroveScene } from "@/components/grove-scene";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Badge } from "@/components/ui/badge";
@@ -15,6 +14,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { HERO_GROVE } from "@/lib/artwork";
 import { formatPkr } from "@/lib/format";
 import { featuredProducts } from "@/lib/products";
 
@@ -46,8 +46,14 @@ export function LandingPage() {
     <div className="flex min-h-full flex-col">
       <SiteHeader tone="grove" />
 
-      <section className="relative flex min-h-[calc(100svh-3.6rem)] items-end overflow-hidden sm:items-center">
-        <GroveScene />
+      <section
+        className="hero-grove relative flex min-h-[calc(100svh-3.6rem)] items-end overflow-hidden sm:items-center"
+        style={{ backgroundImage: `url(${HERO_GROVE.src})` }}
+      >
+        <div
+          className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.25_0.04_55_/_0.62)_0%,oklch(0.25_0.04_55_/_0.28)_48%,oklch(0.25_0.04_55_/_0.18)_100%)]"
+          aria-hidden
+        />
         <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-8 px-4 py-12 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(14rem,22rem)]">
           <div className="flex flex-col gap-6 text-white">
             <p className="text-sm font-medium tracking-wide text-orange-100/90 uppercase">
