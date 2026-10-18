@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { ShoppingBasket } from "lucide-react";
 
-import { CrateGraphic } from "@/components/crate-graphic";
 import { QtyStepper } from "@/components/qty-stepper";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -29,10 +28,6 @@ export function ProductCard({ product, onAdd }: ProductCardProps) {
 
   return (
     <Card className="h-full">
-      <CrateGraphic
-        className="border-b bg-white"
-        sizes="(max-width: 640px) 100vw, 50vw"
-      />
       <CardHeader>
         <div className="flex flex-wrap items-center gap-1.5">
           <Badge variant="secondary">{product.grade}</Badge>
