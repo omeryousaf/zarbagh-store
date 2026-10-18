@@ -53,9 +53,12 @@ If a block starts to look decorative, remove it.
 
 The citrus graphic is the identity mark: fruit first, word second.
 
-Use a simple kinnow / citrus form (icon, fruit discs in the grove, a crate mark) so the product is recognised before “Zarbagh” is read. Keep it flat and few — not illustrated mascots, not photo collages, not patterns that fill the kraft.
+Use the crate / box side artwork — not a substitute illustration. It is the immediate visual association with the product itself, before a word is read.
 
-Photography, if added later, should look grown (grove, crate, fruit) and still leave room for the citrus graphic. The hero grove is atmosphere for orange and green; it should not drown the fruit mark.
+- **Source (do not replace):** `images/Box Side Graphic.jpeg` at the git root `/Users/omeryousuf/Documents/PRODUCTS/ZARBAGH/zarbagh-store/images/`
+- **Served on the site:** copy at `public/images/box-side-graphic.jpeg` → URL `/images/box-side-graphic.jpeg` (Next.js only serves static files from `public/`)
+
+It appears as the crate face on the landing hero, the grove story panel, featured packs, and shop product cards. Keep it as-is — no other product image. The hero grove wash is atmosphere only; it must not add invented fruit.
 
 ## Identity
 

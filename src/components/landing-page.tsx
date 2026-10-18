@@ -1,12 +1,7 @@
-import {
-  BadgeCheck,
-  Droplets,
-  Leaf,
-  MapPin,
-  SunMedium,
-} from "lucide-react";
+import { BadgeCheck, Leaf, MapPin, SunMedium } from "lucide-react";
 import Link from "next/link";
 
+import { CrateGraphic } from "@/components/crate-graphic";
 import { GroveScene } from "@/components/grove-scene";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -53,34 +48,38 @@ export function LandingPage() {
 
       <section className="relative flex min-h-[calc(100svh-3.6rem)] items-end overflow-hidden sm:items-center">
         <GroveScene />
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-12 text-white sm:px-6 sm:py-20">
-          <p className="text-sm font-medium tracking-wide text-orange-100/90 uppercase">
-            Winter kinnow · Sargodha belt
-          </p>
-          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
-            Kinnow worth putting in a bowl.
-          </h1>
-          <p className="max-w-xl text-base leading-7 text-orange-50/90 sm:text-lg">
-            Zarbagh packs Grade A table fruit and juice crates the same week
-            they leave the grove. Thin peel, heavy juice, a sweet-tart bite —
-            the King × Willow Leaf mandarin Punjab waits for each December.
-          </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button
-              size="lg"
-              className="h-12 px-6 text-base"
-              asChild
-            >
-              <Link href="/shop">Shop kinnow</Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="h-12 border-white/40 bg-transparent px-6 text-base text-white hover:bg-white/10 hover:text-white"
-              asChild
-            >
-              <Link href="#story">Read the grove story</Link>
-            </Button>
+        <div className="relative z-10 mx-auto grid w-full max-w-6xl items-center gap-8 px-4 py-12 sm:px-6 sm:py-20 lg:grid-cols-[minmax(0,1fr)_minmax(14rem,22rem)]">
+          <div className="flex flex-col gap-6 text-white">
+            <p className="text-sm font-medium tracking-wide text-orange-100/90 uppercase">
+              Winter kinnow · Sargodha belt
+            </p>
+            <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
+              Kinnow worth putting in a bowl.
+            </h1>
+            <p className="max-w-xl text-base leading-7 text-orange-50/90 sm:text-lg">
+              Zarbagh packs Grade A table fruit and juice crates the same week
+              they leave the grove. Thin peel, heavy juice, a sweet-tart bite —
+              the King × Willow Leaf mandarin Punjab waits for each December.
+            </p>
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+              <Button size="lg" className="h-12 px-6 text-base" asChild>
+                <Link href="/shop">Shop kinnow</Link>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="h-12 border-white/40 bg-transparent px-6 text-base text-white hover:bg-white/10 hover:text-white"
+                asChild
+              >
+                <Link href="#story">Read the grove story</Link>
+              </Button>
+            </div>
+          </div>
+          <div className="mx-auto w-full max-w-sm overflow-hidden rounded-xl bg-white shadow-lg ring-1 ring-black/10 lg:max-w-none">
+            <CrateGraphic
+              preload
+              sizes="(max-width: 1024px) 90vw, 22rem"
+            />
           </div>
         </div>
       </section>
@@ -109,16 +108,18 @@ export function LandingPage() {
             stop.
           </p>
         </div>
-        <aside className="rounded-2xl bg-secondary p-6 ring-1 ring-foreground/10 sm:p-8">
-          <Droplets className="mb-4 size-8 text-primary" aria-hidden />
-          <p className="text-lg font-medium tracking-tight">
-            High juice, thin peel, a clean pull of the skin.
-          </p>
-          <p className="mt-3 text-sm leading-6 text-muted-foreground">
-            Kinnow is a mandarin hybrid, not a sweet orange. Households in
-            Punjab press it at breakfast and peel it after dinner. A 10 kg
-            family crate is about a week for a house that actually eats fruit.
-          </p>
+        <aside className="overflow-hidden rounded-2xl bg-card ring-1 ring-foreground/10">
+          <CrateGraphic sizes="(max-width: 1024px) 90vw, 28rem" />
+          <div className="p-6 sm:p-8">
+            <p className="text-lg font-medium tracking-tight">
+              High juice, thin peel, a clean pull of the skin.
+            </p>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              Kinnow is a mandarin hybrid, not a sweet orange. Households in
+              Punjab press it at breakfast and peel it after dinner. A 10 kg
+              family crate is about a week for a house that actually eats fruit.
+            </p>
+          </div>
         </aside>
       </section>
 
@@ -138,6 +139,10 @@ export function LandingPage() {
           <div className="grid gap-4 md:grid-cols-3">
             {featuredProducts.map((product) => (
               <Card key={product.id} className="h-full">
+                <CrateGraphic
+                  className="border-b bg-white"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
                 <CardHeader>
                   <div className="flex flex-wrap gap-1.5">
                     <Badge variant="secondary">{product.grade}</Badge>

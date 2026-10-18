@@ -22,23 +22,6 @@ export function GroveScene() {
           <circle cx="980" cy="370" r="160" />
           <circle cx="1140" cy="430" r="120" />
         </g>
-        <g fill="oklch(0.68 0.17 55)">
-          <circle cx="150" cy="460" r="14" />
-          <circle cx="210" cy="400" r="12" />
-          <circle cx="280" cy="450" r="15" />
-          <circle cx="340" cy="360" r="11" />
-          <circle cx="500" cy="340" r="16" />
-          <circle cx="590" cy="410" r="13" />
-          <circle cx="640" cy="300" r="12" />
-          <circle cx="740" cy="370" r="15" />
-          <circle cx="820" cy="430" r="11" />
-          <circle cx="940" cy="340" r="14" />
-          <circle cx="1020" cy="400" r="13" />
-          <circle cx="1100" cy="360" r="12" />
-        </g>
-        <g fill="oklch(0.78 0.14 75)" opacity="0.35">
-          <circle cx="200" cy="180" r="90" />
-        </g>
       </svg>
       <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,oklch(0.18_0.04_70_/_0.55)_100%)]" />
     </div>

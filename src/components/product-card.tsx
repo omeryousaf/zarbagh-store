@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { Citrus, ShoppingBasket } from "lucide-react";
+import { ShoppingBasket } from "lucide-react";
 
+import { CrateGraphic } from "@/components/crate-graphic";
 import { QtyStepper } from "@/components/qty-stepper";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -28,10 +29,11 @@ export function ProductCard({ product, onAdd }: ProductCardProps) {
 
   return (
     <Card className="h-full">
+      <CrateGraphic
+        className="border-b bg-white"
+        sizes="(max-width: 640px) 100vw, 50vw"
+      />
       <CardHeader>
-        <div className="mb-2 flex size-12 items-center justify-center rounded-xl bg-accent text-primary">
-          <Citrus className="size-6" aria-hidden />
-        </div>
         <div className="flex flex-wrap items-center gap-1.5">
           <Badge variant="secondary">{product.grade}</Badge>
           <Badge variant="outline">{product.pack}</Badge>
