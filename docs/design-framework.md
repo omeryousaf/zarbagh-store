@@ -55,7 +55,7 @@ The citrus graphic is the identity mark: fruit first, word second.
 
 Use the crate / box side artwork — not a substitute illustration. It is the immediate visual association with the product itself, before a word is read.
 
-- **Crate / box side (Featured Packs only):** source `images/Box Side Graphic.jpeg`; served copy `public/images/box-side-graphic.jpeg` → `/images/box-side-graphic.jpeg`. Do not place it on the hero, story panel, or shop cards.
+- **Crate / box (Featured Packs only):** source `images/Box.jpeg`; served copy `public/images/box.jpeg` → `/images/box.jpeg` (on Pages: `/zarbagh-store/images/box.jpeg`). Do not place it on the hero, story panel, or shop cards.
 - **Hero background (landing, under the nav):** source `images/Bagh.jpeg`; served copy `public/images/bagh.jpeg` → `/images/bagh.jpeg`. CSS `background-image`, full-bleed, cover, centre. A light kraft scrim keeps type readable. No crate/box overlay.
 
 Next.js only serves static files from `public/`. Keep originals in `images/`.

@@ -2,10 +2,10 @@
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export const CRATE_GRAPHIC = {
-  src: `${basePath}/images/box-side-graphic.jpeg`,
-  width: 792,
-  height: 766,
-  alt: "Zarbagh crate side graphic: citrus mark, finest premium fruits, Bhalwal, since 1980",
+  src: `${basePath}/images/box.jpeg`,
+  width: 738,
+  height: 577,
+  alt: "Zarbagh kraft crate: Bhalwal’s finest premium fruits",
 } as const;
 
 export const HERO_GROVE = {
