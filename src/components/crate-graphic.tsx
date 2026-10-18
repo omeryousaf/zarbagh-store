@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 import { cn } from "@/lib/utils";
 import { CRATE_GRAPHIC } from "@/lib/artwork";
 
@@ -15,14 +13,15 @@ export function CrateGraphic({
   sizes,
 }: CrateGraphicProps) {
   return (
-    <Image
+    <img
       src={CRATE_GRAPHIC.src}
       alt={CRATE_GRAPHIC.alt}
       width={CRATE_GRAPHIC.width}
       height={CRATE_GRAPHIC.height}
-      preload={preload}
       sizes={sizes}
-      className={cn("h-auto w-full", className)}
+      decoding="async"
+      fetchPriority={preload ? "high" : "auto"}
+      className={cn("block h-auto w-full", className)}
     />
   );
 }

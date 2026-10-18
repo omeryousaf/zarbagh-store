@@ -138,7 +138,7 @@ export function LandingPage() {
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {featuredProducts.map((product) => (
-              <Card key={product.id} className="h-full">
+              <Card key={product.id} className="h-full pt-0">
                 <CrateGraphic
                   className="border-b bg-white"
                   sizes="(max-width: 768px) 100vw, 33vw"
