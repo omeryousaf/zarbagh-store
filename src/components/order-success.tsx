@@ -29,8 +29,8 @@ export function OrderSuccess({ order, onShopAgain }: OrderSuccessProps) {
           browser only — nothing was charged or emailed.
         </AlertDescription>
       </Alert>
-      <div className="rounded-xl bg-card p-4 ring-1 ring-foreground/10">
-        <p className="text-xs tracking-wide text-muted-foreground uppercase">
+      <div className="rounded-xl bg-secondary/60 p-4">
+        <p className="text-xs text-muted-foreground">
           Order {order.id}
         </p>
         <p className="mt-1 text-sm text-muted-foreground">{placed}</p>
@@ -68,7 +68,7 @@ export function OrderSuccess({ order, onShopAgain }: OrderSuccessProps) {
         </ul>
         <p className="mt-3 flex items-baseline justify-between font-semibold">
           <span>Total</span>
-          <span>{formatPkr(order.totalPkr)}</span>
+          <span className="text-primary">{formatPkr(order.totalPkr)}</span>
         </p>
       </div>
       <Button type="button" variant="outline" size="lg" onClick={onShopAgain}>

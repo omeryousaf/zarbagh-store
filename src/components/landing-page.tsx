@@ -1,10 +1,8 @@
-import { BadgeCheck, Leaf, MapPin, SunMedium } from "lucide-react";
 import Link from "next/link";
 
 import { CrateGraphic } from "@/components/crate-graphic";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -22,46 +20,42 @@ const values = [
   {
     title: "Packed the same week",
     body: "Fruit is washed, graded, and crated within days of the pick — not held for a late-season dump.",
-    icon: SunMedium,
   },
   {
     title: "Honest grades",
     body: "Grade A for the bowl. Juice crates for the press. We label the difference instead of mixing it.",
-    icon: BadgeCheck,
   },
   {
     title: "Canal-belt groves",
     body: "Kinnow from the Sargodha, Bhalwal, and Kot Momin orchards — Punjab’s winter mandarin country.",
-    icon: Leaf,
   },
   {
     title: "Dropped at the gate",
     body: "Routes across Punjab and into Islamabad / Rawalpindi. You confirm address in the shop; this slice does not charge.",
-    icon: MapPin,
   },
 ];
 
 export function LandingPage() {
   return (
     <div className="flex min-h-full flex-col">
-      <SiteHeader tone="grove" />
+      <SiteHeader />
 
       <section
-        className="hero-grove relative flex min-h-[calc(100svh-3.6rem)] items-end overflow-hidden sm:items-center"
+        className="hero-grove relative flex min-h-[calc(100svh-3.75rem)] items-end overflow-hidden sm:items-center"
         style={{ backgroundImage: `url(${HERO_GROVE.src})` }}
       >
         <div
-          className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.25_0.04_55_/_0.62)_0%,oklch(0.25_0.04_55_/_0.28)_48%,oklch(0.25_0.04_55_/_0.18)_100%)]"
+          className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.90_0.038_82_/_0.90)_0%,oklch(0.90_0.038_82_/_0.74)_42%,oklch(0.90_0.038_82_/_0.42)_100%)]"
           aria-hidden
         />
-        <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-6 px-4 py-12 text-white sm:px-6 sm:py-20">
-          <p className="text-sm font-medium tracking-wide text-orange-100/90 uppercase">
+        <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-5 px-6 py-16 sm:px-8 sm:py-24">
+          <p className="text-sm text-muted-foreground">
             Winter kinnow · Sargodha belt
           </p>
           <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
             Kinnow worth putting in a bowl.
           </h1>
-          <p className="max-w-xl text-base leading-7 text-orange-50/90 sm:text-lg">
+          <p className="max-w-xl text-base leading-7 text-foreground/80 sm:text-lg">
             Zarbagh packs Grade A table fruit and juice crates the same week
             they leave the grove. Thin peel, heavy juice, a sweet-tart bite —
             the King × Willow Leaf mandarin Punjab waits for each December.
@@ -73,7 +67,7 @@ export function LandingPage() {
             <Button
               size="lg"
               variant="outline"
-              className="h-12 border-white/40 bg-transparent px-6 text-base text-white hover:bg-white/10 hover:text-white"
+              className="h-12 px-6 text-base"
               asChild
             >
               <Link href="#story">Read the grove story</Link>
@@ -84,10 +78,10 @@ export function LandingPage() {
 
       <section
         id="story"
-        className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:items-center lg:py-24"
+        className="mx-auto grid w-full max-w-5xl gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:items-center lg:py-24"
       >
         <div className="flex flex-col gap-4">
-          <p className="text-sm font-medium text-primary">Our groves</p>
+          <p className="text-sm text-muted-foreground">Our groves</p>
           <h2 className="text-3xl font-semibold tracking-tight">
             A packing table at the edge of the kinnow belt.
           </h2>
@@ -106,7 +100,7 @@ export function LandingPage() {
             stop.
           </p>
         </div>
-        <aside className="rounded-2xl bg-secondary p-6 ring-1 ring-foreground/10 sm:p-8">
+        <aside className="rounded-xl bg-grove-wash p-6 sm:p-8">
           <p className="text-lg font-medium tracking-tight">
             High juice, thin peel, a clean pull of the skin.
           </p>
@@ -118,11 +112,11 @@ export function LandingPage() {
         </aside>
       </section>
 
-      <section className="border-y bg-card">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-16 sm:px-6 lg:py-20">
+      <section>
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-20 sm:px-8">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <p className="text-sm font-medium text-primary">Featured packs</p>
+              <p className="text-sm text-muted-foreground">Featured packs</p>
               <h2 className="text-3xl font-semibold tracking-tight">
                 Start with a crate.
               </h2>
@@ -131,23 +125,22 @@ export function LandingPage() {
               <Link href="/shop">See every pack</Link>
             </Button>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-3">
             {featuredProducts.map((product) => (
               <Card key={product.id} className="h-full pt-0">
                 <CrateGraphic
-                  className="border-b bg-white"
+                  className="border-b border-border/70 bg-card"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <CardHeader>
-                  <div className="flex flex-wrap gap-1.5">
-                    <Badge variant="secondary">{product.grade}</Badge>
-                    <Badge variant="outline">{product.pack}</Badge>
-                  </div>
+                  <p className="text-sm text-muted-foreground">
+                    {product.grade} · {product.pack}
+                  </p>
                   <CardTitle className="text-lg">{product.name}</CardTitle>
                   <CardDescription>{product.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-2xl font-semibold tracking-tight">
+                  <p className="text-2xl font-semibold tracking-tight text-primary">
                     {formatPkr(product.pricePkr)}
                     <span className="ml-1 text-sm font-normal text-muted-foreground">
                       / {product.unitLabel}
@@ -165,10 +158,9 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-6xl gap-6 px-4 py-16 sm:px-6 sm:grid-cols-2 lg:grid-cols-4 lg:py-20">
+      <section className="mx-auto grid w-full max-w-5xl gap-10 px-6 py-20 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
         {values.map((value) => (
-          <div key={value.title} className="flex flex-col gap-3">
-            <value.icon className="size-6 text-primary" aria-hidden />
+          <div key={value.title} className="flex flex-col gap-2">
             <h3 className="font-medium">{value.title}</h3>
             <p className="text-sm leading-6 text-muted-foreground">
               {value.body}
@@ -177,22 +169,18 @@ export function LandingPage() {
         ))}
       </section>
 
-      <section className="bg-primary px-4 py-14 text-primary-foreground sm:px-6">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+      <section className="border-t px-6 py-16 sm:px-8">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-xl">
             <h2 className="text-3xl font-semibold tracking-tight">
               The crate is the product.
             </h2>
-            <p className="mt-2 text-sm leading-6 text-primary-foreground/85">
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
               Open the shop to set quantities, add a delivery address, and
               confirm the order on-screen. Nothing is charged in this slice.
             </p>
           </div>
-          <Button
-            size="lg"
-            className="h-12 bg-background px-6 text-base text-foreground hover:bg-background/90"
-            asChild
-          >
+          <Button size="lg" className="h-12 px-6 text-base" asChild>
             <Link href="/shop">Shop the catalogue</Link>
           </Button>
         </div>

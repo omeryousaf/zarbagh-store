@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ShoppingBasket } from "lucide-react";
 
 import { QtyStepper } from "@/components/qty-stepper";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -29,10 +27,9 @@ export function ProductCard({ product, onAdd }: ProductCardProps) {
   return (
     <Card className="h-full">
       <CardHeader>
-        <div className="flex flex-wrap items-center gap-1.5">
-          <Badge variant="secondary">{product.grade}</Badge>
-          <Badge variant="outline">{product.pack}</Badge>
-        </div>
+        <p className="text-sm text-muted-foreground">
+          {product.grade} · {product.pack}
+        </p>
         <CardTitle className="text-lg">{product.name}</CardTitle>
         <CardDescription>{product.description}</CardDescription>
       </CardHeader>
@@ -40,7 +37,7 @@ export function ProductCard({ product, onAdd }: ProductCardProps) {
         <p className="text-sm text-muted-foreground">
           Best for {product.bestFor.toLowerCase()}.
         </p>
-        <p className="text-2xl font-semibold tracking-tight">
+        <p className="text-2xl font-semibold tracking-tight text-primary">
           {formatPkr(product.pricePkr)}
           <span className="ml-1 text-sm font-normal text-muted-foreground">
             / {product.unitLabel}
@@ -59,7 +56,6 @@ export function ProductCard({ product, onAdd }: ProductCardProps) {
           size="lg"
           onClick={() => onAdd(product.id, qty)}
         >
-          <ShoppingBasket data-icon="inline-start" />
           Add to cart
         </Button>
       </CardFooter>

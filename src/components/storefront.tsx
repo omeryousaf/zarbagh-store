@@ -145,10 +145,10 @@ export function Storefront({ products }: StorefrontProps) {
     <div className="flex min-h-full flex-col">
       <SiteHeader cartCount={itemCount} />
 
-      <main className="mx-auto flex w-full max-w-6xl flex-1 flex-col gap-10 px-4 py-8 sm:px-6 lg:grid lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start lg:gap-8">
+      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-10 px-6 py-10 sm:px-8 lg:grid lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start lg:gap-10">
         <div className="flex flex-col gap-8">
           <section className="flex flex-col gap-3">
-            <p className="text-sm font-medium text-primary">Catalogue</p>
+            <p className="text-sm text-muted-foreground">Catalogue</p>
             <h1 className="text-3xl font-semibold tracking-tight">
               Shop kinnow crates and kilos.
             </h1>
@@ -159,7 +159,7 @@ export function Storefront({ products }: StorefrontProps) {
             </p>
           </section>
 
-          <section id="catalog" className="grid gap-4 sm:grid-cols-2">
+          <section id="catalog" className="grid gap-6 sm:grid-cols-2">
             {products.map((product) => (
               <ProductCard
                 key={product.id}

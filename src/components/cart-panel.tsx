@@ -80,7 +80,7 @@ export function CartPanel({ lines, onQtyChange, onRemove }: CartPanelProps) {
       </ul>
       <p className="flex items-baseline justify-between text-base font-semibold">
         <span>Total</span>
-        <span>{formatPkr(total)}</span>
+        <span className="text-primary">{formatPkr(total)}</span>
       </p>
     </div>
   );
