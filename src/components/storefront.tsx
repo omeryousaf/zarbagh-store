@@ -145,32 +145,38 @@ export function Storefront({ products }: StorefrontProps) {
     <div className="flex min-h-full flex-col">
       <SiteHeader cartCount={itemCount} />
 
-      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col gap-10 px-6 py-10 sm:px-8 lg:grid lg:grid-cols-[minmax(0,1fr)_22rem] lg:items-start lg:gap-10">
-        <div className="flex flex-col gap-8">
-          <section className="flex flex-col gap-3">
-            <p className="text-sm text-muted-foreground">Catalogue</p>
-            <h1 className="text-3xl font-semibold tracking-tight">
-              Shop kinnow crates and kilos.
-            </h1>
-            <p className="max-w-2xl text-base leading-7 text-muted-foreground">
-              Prices in Pakistani rupees. Set a quantity on each pack, then
-              confirm name, phone, and a delivery address. This slice keeps the
-              order in the browser.
-            </p>
-          </section>
+      <main className="flex flex-1 flex-col lg:grid lg:grid-cols-[minmax(0,1fr)_24rem] lg:items-stretch">
+        <div className="bg-paper">
+          <div className="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-10 sm:px-8 lg:ml-auto lg:mr-0 lg:max-w-3xl lg:pr-8">
+            <section className="flex flex-col gap-3">
+              <p className="text-sm text-muted-foreground">Catalogue</p>
+              <h1 className="text-3xl font-semibold tracking-tight">
+                Shop kinnow crates and kilos.
+              </h1>
+              <p className="max-w-2xl text-base leading-7 text-muted-foreground">
+                Prices in Pakistani rupees. Set a quantity on each pack, then
+                confirm name, phone, and a delivery address. This slice keeps the
+                order in the browser.
+              </p>
+            </section>
 
-          <section id="catalog" className="grid gap-6 sm:grid-cols-2">
-            {products.map((product) => (
-              <ProductCard
-                key={product.id}
-                product={product}
-                onAdd={addToCart}
-              />
-            ))}
-          </section>
+            <section id="catalog" className="grid gap-6 sm:grid-cols-2">
+              {products.map((product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAdd={addToCart}
+                />
+              ))}
+            </section>
+          </div>
         </div>
 
-        <aside id="order" className="flex flex-col gap-4 lg:sticky lg:top-20">
+        <aside
+          id="order"
+          className="bg-grove-wash px-6 py-10 sm:px-8 lg:px-6"
+        >
+          <div className="flex flex-col gap-4 lg:sticky lg:top-20">
           <Card>
             <CardHeader>
               <CardTitle>Your cart</CardTitle>
@@ -223,13 +229,14 @@ export function Storefront({ products }: StorefrontProps) {
               )}
             </CardContent>
           </Card>
+          </div>
         </aside>
       </main>
 
       <SiteFooter />
 
       {itemCount > 0 && !order ? (
-        <div className="sticky bottom-0 z-20 border-t bg-background/95 p-3 backdrop-blur-md lg:hidden">
+        <div className="sticky bottom-0 z-20 border-t border-border/80 bg-citrus-wash p-3 lg:hidden">
           <Button className="w-full" size="lg" asChild>
             <a href="#order">
               Checkout · {itemCount} · {formatPkr(total)}

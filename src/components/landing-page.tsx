@@ -76,43 +76,42 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section
-        id="story"
-        className="mx-auto grid w-full max-w-5xl gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:items-center lg:py-24"
-      >
-        <div className="flex flex-col gap-4">
-          <p className="text-sm text-muted-foreground">Our groves</p>
-          <h2 className="text-3xl font-semibold tracking-tight">
-            A packing table at the edge of the kinnow belt.
-          </h2>
-          <p className="text-base leading-7 text-muted-foreground">
-            Zarbagh buys from growers along the canal-fed orchards of Sargodha
-            district. Kinnow only tastes like itself for a short winter:
-            mid-December through February, when the rind thins and the juice
-            runs. We grade by hand — even fruit for the table, smaller or
-            marked fruit for the press — and crate for kitchens, not for a
-            cold-store that sits until March.
-          </p>
-          <p className="text-base leading-7 text-muted-foreground">
-            The work is ordinary on purpose: wash, sort, weigh, nail the crate.
-            What we will not do is sell “mixed” as Grade A, or stretch the
-            season with fruit that has gone puffy. When the flush ends, we
-            stop.
-          </p>
+      <section id="story" className="bg-grove-wash">
+        <div className="mx-auto grid w-full max-w-5xl gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:items-center lg:py-24">
+          <div className="flex flex-col gap-4">
+            <p className="text-sm text-muted-foreground">Our groves</p>
+            <h2 className="text-3xl font-semibold tracking-tight">
+              A packing table at the edge of the kinnow belt.
+            </h2>
+            <p className="text-base leading-7 text-muted-foreground">
+              Zarbagh buys from growers along the canal-fed orchards of Sargodha
+              district. Kinnow only tastes like itself for a short winter:
+              mid-December through February, when the rind thins and the juice
+              runs. We grade by hand — even fruit for the table, smaller or
+              marked fruit for the press — and crate for kitchens, not for a
+              cold-store that sits until March.
+            </p>
+            <p className="text-base leading-7 text-muted-foreground">
+              The work is ordinary on purpose: wash, sort, weigh, nail the crate.
+              What we will not do is sell “mixed” as Grade A, or stretch the
+              season with fruit that has gone puffy. When the flush ends, we
+              stop.
+            </p>
+          </div>
+          <aside className="rounded-xl bg-paper p-6 sm:p-8">
+            <p className="text-lg font-medium tracking-tight">
+              High juice, thin peel, a clean pull of the skin.
+            </p>
+            <p className="mt-3 text-sm leading-6 text-muted-foreground">
+              Kinnow is a mandarin hybrid, not a sweet orange. Households in
+              Punjab press it at breakfast and peel it after dinner. A 10 kg
+              family crate is about a week for a house that actually eats fruit.
+            </p>
+          </aside>
         </div>
-        <aside className="rounded-xl bg-grove-wash p-6 sm:p-8">
-          <p className="text-lg font-medium tracking-tight">
-            High juice, thin peel, a clean pull of the skin.
-          </p>
-          <p className="mt-3 text-sm leading-6 text-muted-foreground">
-            Kinnow is a mandarin hybrid, not a sweet orange. Households in
-            Punjab press it at breakfast and peel it after dinner. A 10 kg
-            family crate is about a week for a house that actually eats fruit.
-          </p>
-        </aside>
       </section>
 
-      <section>
+      <section className="bg-paper">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-20 sm:px-8">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
@@ -127,9 +126,9 @@ export function LandingPage() {
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {featuredProducts.map((product) => (
-              <Card key={product.id} className="h-full pt-0">
+              <Card key={product.id} className="h-full bg-background pt-0">
                 <CrateGraphic
-                  className="border-b border-border/70 bg-card"
+                  className="border-b border-border/70 bg-background"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
                 <CardHeader>
@@ -158,18 +157,20 @@ export function LandingPage() {
         </div>
       </section>
 
-      <section className="mx-auto grid w-full max-w-5xl gap-10 px-6 py-20 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
-        {values.map((value) => (
-          <div key={value.title} className="flex flex-col gap-2">
-            <h3 className="font-medium">{value.title}</h3>
-            <p className="text-sm leading-6 text-muted-foreground">
-              {value.body}
-            </p>
-          </div>
-        ))}
+      <section className="bg-background">
+        <div className="mx-auto grid w-full max-w-5xl gap-10 px-6 py-20 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
+          {values.map((value) => (
+            <div key={value.title} className="flex flex-col gap-2">
+              <h3 className="font-medium">{value.title}</h3>
+              <p className="text-sm leading-6 text-muted-foreground">
+                {value.body}
+              </p>
+            </div>
+          ))}
+        </div>
       </section>
 
-      <section className="border-t px-6 py-16 sm:px-8">
+      <section className="bg-citrus-wash px-6 py-16 sm:px-8">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
           <div className="max-w-xl">
             <h2 className="text-3xl font-semibold tracking-tight">

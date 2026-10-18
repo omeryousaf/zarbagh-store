@@ -25,7 +25,7 @@ export function ProductCard({ product, onAdd }: ProductCardProps) {
   const [qty, setQty] = useState(MIN_QTY);
 
   return (
-    <Card className="h-full">
+    <Card className="h-full bg-background">
       <CardHeader>
         <p className="text-sm text-muted-foreground">
           {product.grade} · {product.pack}
