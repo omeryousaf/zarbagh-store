@@ -22,6 +22,12 @@ The app listens on `0.0.0.0:4321` so phones on the same LAN can open it.
 
 On the LAN: `http://<your-lan-ip>:4321/` and `http://<your-lan-ip>:4321/shop`.
 
+## GitHub Pages
+
+Live site: [https://omeryousaf.github.io/zarbagh-store/](https://omeryousaf.github.io/zarbagh-store/)
+
+Pushes to `main` build a static export on GitHub Actions and deploy to Pages (project path `/zarbagh-store`). If the site is 404, open the repo **Settings → Pages** and set **Source** to **GitHub Actions**.
+
 ## What this slice includes
 
 - Marketing home in the spirit of a farm shop: full-bleed grove hero, grower story, featured crates, trust row, then into the shop
