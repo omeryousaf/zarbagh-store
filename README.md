@@ -24,9 +24,9 @@ On the LAN: `http://<your-lan-ip>:4321/` and `http://<your-lan-ip>:4321/shop`.
 
 ## GitHub Pages
 
-Live site: [https://omeryousaf.github.io/zarbagh-store/](https://omeryousaf.github.io/zarbagh-store/)
+Live site: [https://zarbaghpk.com/](https://zarbaghpk.com/) (GitHub Pages custom domain). The github.io project URL may still exist, but the export is built for `/`, not `/zarbagh-store`.
 
-Pushes to `main` build a static export on GitHub Actions and deploy to Pages (project path `/zarbagh-store`). If the site is 404, open the repo **Settings → Pages** and set **Source** to **GitHub Actions**.
+Pushes to `main` build a static export on GitHub Actions and deploy to Pages. If the site is 404, open the repo **Settings → Pages** and set **Source** to **GitHub Actions**.
 
 ## What this slice includes
 
