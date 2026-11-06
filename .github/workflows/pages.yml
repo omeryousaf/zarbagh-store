@@ -32,13 +32,12 @@ jobs:
         run: npm ci
 
       - name: Setup Pages
-        id: pages
         uses: actions/configure-pages@v5
 
       - name: Build static export
+        # No PAGES_BASE_PATH: the custom domain (zarbaghpk.com) is served at `/`.
+        # configure-pages would set /zarbagh-store and CSS would 404 as /zarbagh-store/_next/...
         run: npm run build
-        env:
-          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
 
       - name: Add .nojekyll
         run: touch out/.nojekyll
