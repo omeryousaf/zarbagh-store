@@ -41,10 +41,10 @@ export function SiteHeader({ cartCount = 0 }: SiteHeaderProps) {
   return (
     <header className="sticky top-0 z-50 border-b border-leaf/40 bg-peach text-orchard">
       <div className="mx-auto flex w-full max-w-6xl items-center gap-4 px-4 py-3 sm:px-8">
-        <div className="flex min-w-0 flex-1">
+        <div className="shrink-0">
           <Link
             href="/"
-            className="flex min-w-0 flex-col gap-0.5 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orchard"
+            className="flex flex-col gap-0.5 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orchard"
             onClick={closeMenu}
           >
             <span className="font-display text-[1.35rem] leading-none font-semibold tracking-[0.22em] text-orchard sm:text-[1.55rem]">
@@ -58,11 +58,11 @@ export function SiteHeader({ cartCount = 0 }: SiteHeaderProps) {
 
         <nav
           aria-label="Primary"
-          className="hidden flex-1 items-center justify-center lg:flex"
+          className="hidden min-w-0 flex-1 items-center justify-center lg:flex"
         >
-          <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1">
+          <ul className="flex flex-nowrap items-center justify-center gap-x-5">
             {NAV_LINKS.map((link) => (
-              <li key={link.label}>
+              <li key={link.label} className="shrink-0">
                 <NavAnchor
                   href={link.href}
                   current={isCurrentPath(link.href, pathname)}
@@ -74,7 +74,7 @@ export function SiteHeader({ cartCount = 0 }: SiteHeaderProps) {
           </ul>
         </nav>
 
-        <div className="flex flex-1 items-center justify-end gap-2 sm:gap-3">
+        <div className="ml-auto flex shrink-0 items-center justify-end gap-2 sm:gap-3 lg:ml-0">
           <Link
             href="/shop#order"
             className="rounded-sm text-sm font-medium tracking-wide whitespace-nowrap text-orchard transition-colors hover:text-kinnow focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orchard"
@@ -134,7 +134,7 @@ function NavAnchor({
   children: ReactNode;
 }) {
   const classes = cn(
-    "text-sm tracking-wide text-orchard transition-colors hover:text-kinnow focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orchard",
+    "text-sm tracking-wide whitespace-nowrap text-orchard transition-colors hover:text-kinnow focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orchard",
     current ? "font-semibold" : "font-medium",
     className,
   );
