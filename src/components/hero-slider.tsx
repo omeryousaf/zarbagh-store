@@ -72,12 +72,10 @@ export function HeroSlider() {
               <Link
                 href="/shop"
                 tabIndex={active ? 0 : -1}
-                className="absolute z-10 inline-flex items-center justify-center rounded-full bg-orchard text-[clamp(0.55rem,1.55vw,0.95rem)] font-semibold tracking-[0.14em] text-white uppercase before:absolute before:-inset-4 before:content-[''] hover:bg-orchard/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                className="absolute z-10 inline-flex items-center justify-center whitespace-nowrap rounded-full bg-orchard px-4 py-2 text-[clamp(0.6875rem,1.8vw,0.9375rem)] font-semibold tracking-[0.12em] text-white uppercase before:absolute before:-inset-4 before:content-[''] hover:bg-orchard/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:px-5 sm:py-2.5"
                 style={{
                   left: slide.cta.left,
                   top: slide.cta.top,
-                  width: slide.cta.width,
-                  height: slide.cta.height,
                 }}
               >
                 Shop Now

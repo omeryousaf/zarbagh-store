@@ -17,8 +17,6 @@ export const HERO_SLIDES = [
     cta: {
       left: "7.85%",
       top: "72.7%",
-      width: "15.5%",
-      height: "9.4%",
     },
   },
   {
@@ -29,8 +27,6 @@ export const HERO_SLIDES = [
     cta: {
       left: "7.8%",
       top: "66.9%",
-      width: "13.65%",
-      height: "8.2%",
     },
   },
 ] as const;
