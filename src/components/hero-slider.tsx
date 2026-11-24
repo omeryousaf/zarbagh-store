@@ -76,6 +76,8 @@ export function HeroSlider() {
                 style={{
                   left: slide.cta.left,
                   top: slide.cta.top,
+                  minWidth: slide.cta.minWidth,
+                  minHeight: slide.cta.minHeight,
                 }}
               >
                 Shop Now
