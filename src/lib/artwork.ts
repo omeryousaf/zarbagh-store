@@ -33,3 +33,31 @@ export const HERO_SLIDES = [
     },
   },
 ] as const;
+
+export const ORCHARD_INTRO = {
+  src: `${basePath}/images/orchard-1200x800.jpg`,
+  width: 1200,
+  height: 800,
+  alt: "Rows of kinnow trees in a Bhalwal orchard",
+} as const;
+
+export const SHOP_BANNERS = {
+  large: {
+    src: `${basePath}/images/shop-kinnow-48.jpg`,
+    width: 1080,
+    height: 1080,
+    alt: "Kinnow Box: Large, 48 count",
+  },
+  medium: {
+    src: `${basePath}/images/shop-kinnow-54.jpg`,
+    width: 1080,
+    height: 1080,
+    alt: "Kinnow Box: Medium, 54 count",
+  },
+  regular: {
+    src: `${basePath}/images/shop-kinnow-60.jpg`,
+    width: 1080,
+    height: 1080,
+    alt: "Kinnow Box: Regular, 60 count",
+  },
+} as const;

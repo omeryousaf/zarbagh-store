@@ -8,9 +8,15 @@ export function formatPkr(amount: number): string {
   return pkr.format(amount);
 }
 
-export function formatQty(qty: number, unitLabel: "kg" | "crate"): string {
+export function formatQty(
+  qty: number,
+  unitLabel: "kg" | "crate" | "box",
+): string {
   if (unitLabel === "kg") {
     return qty === 1 ? "1 kg" : `${qty} kg`;
+  }
+  if (unitLabel === "box") {
+    return qty === 1 ? "1 box" : `${qty} boxes`;
   }
   return qty === 1 ? "1 crate" : `${qty} crates`;
 }
