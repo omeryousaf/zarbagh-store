@@ -1,58 +1,160 @@
-import { cn } from "cn";
-import Link from "next/link";
+"use client";
 
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
+import { cn } from "cn";
+import { Menu, X } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useId, useState, type ReactNode } from "react";
+
+const NAV_LINKS = [
+  { href: "/", label: "Home" },
+  { href: "#", label: "Our Story" },
+  { href: "/shop", label: "Shop" },
+  { href: "#", label: "Recipes" },
+  { href: "#", label: "Shipping & Returns" },
+  { href: "#", label: "Contact Us" },
+] as const;
 
 type SiteHeaderProps = {
   cartCount?: number;
 };
 
-export function SiteHeader({ cartCount }: SiteHeaderProps) {
+function isCurrentPath(href: string, pathname: string) {
+  if (href === "#") {
+    return false;
+  }
+  if (href === "/") {
+    return pathname === "/";
+  }
+  return pathname === href || pathname === `${href}/`;
+}
+
+export function SiteHeader({ cartCount = 0 }: SiteHeaderProps) {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const menuId = useId();
+
+  function closeMenu() {
+    setMenuOpen(false);
+  }
+
   return (
-    <header className="sticky top-0 z-30 border-b border-border/80 bg-background/92 backdrop-blur-md">
-      <div className="mx-auto flex w-full max-w-5xl items-center justify-between gap-3 px-6 py-3.5 sm:px-8">
-        <Link
-          href="/"
-          className="text-base font-semibold tracking-tight text-foreground"
-        >
-          Zarbagh
-        </Link>
-        <nav className="flex items-center gap-1 sm:gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="hidden sm:inline-flex"
-            asChild
+    <header className="sticky top-0 z-50 border-b border-leaf/40 bg-peach text-orchard">
+      <div className="mx-auto flex w-full max-w-6xl items-center gap-4 px-4 py-3 sm:px-8">
+        <div className="shrink-0">
+          <Link
+            href="/"
+            className="flex flex-col gap-0.5 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orchard"
+            onClick={closeMenu}
           >
-            <Link href="/#story">Our groves</Link>
-          </Button>
-          {cartCount === undefined ? (
-            <Button size="sm" asChild>
-              <Link href="/shop">Shop kinnow</Link>
-            </Button>
-          ) : (
-            <>
-              <Button variant="ghost" size="sm" asChild>
-                <Link href="/shop">Shop</Link>
-              </Button>
-              <Button variant="outline" size="sm" asChild>
-                <Link href="/shop#order">
-                  Cart
-                  <Badge
-                    variant="secondary"
-                    className={cn(
-                      "h-5 min-w-5 rounded-full px-1.5 font-medium",
-                    )}
-                  >
-                    {cartCount}
-                  </Badge>
-                </Link>
-              </Button>
-            </>
-          )}
+            <span className="font-display text-[1.35rem] leading-none font-semibold tracking-[0.22em] text-orchard sm:text-[1.55rem]">
+              ZARBAGH
+            </span>
+            <span className="text-[0.62rem] leading-none font-medium tracking-[0.34em] text-leaf uppercase">
+              Since 1980 · Bhalwal
+            </span>
+          </Link>
+        </div>
+
+        <nav
+          aria-label="Primary"
+          className="hidden min-w-0 flex-1 items-center justify-center lg:flex"
+        >
+          <ul className="flex flex-nowrap items-center justify-center gap-x-5">
+            {NAV_LINKS.map((link) => (
+              <li key={link.label} className="shrink-0">
+                <NavAnchor
+                  href={link.href}
+                  current={isCurrentPath(link.href, pathname)}
+                >
+                  {link.label}
+                </NavAnchor>
+              </li>
+            ))}
+          </ul>
         </nav>
+
+        <div className="ml-auto flex shrink-0 items-center justify-end gap-2 sm:gap-3 lg:ml-0">
+          <Link
+            href="/shop#order"
+            className="rounded-sm text-sm font-medium tracking-wide whitespace-nowrap text-orchard transition-colors hover:text-kinnow focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orchard"
+            onClick={closeMenu}
+          >
+            Cart ({cartCount})
+          </Link>
+          <button
+            type="button"
+            className="inline-flex size-10 items-center justify-center rounded-sm text-orchard transition-colors hover:bg-orchard/10 hover:text-kinnow focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orchard lg:hidden"
+            aria-controls={menuId}
+            aria-expanded={menuOpen}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <X aria-hidden /> : <Menu aria-hidden />}
+          </button>
+        </div>
       </div>
+
+      <nav
+        id={menuId}
+        aria-label="Mobile"
+        hidden={!menuOpen}
+        className="border-t border-leaf/30 bg-peach lg:hidden"
+      >
+        <ul className="mx-auto flex w-full max-w-6xl flex-col px-4 py-2 sm:px-8">
+          {NAV_LINKS.map((link) => (
+            <li key={link.label}>
+              <NavAnchor
+                href={link.href}
+                current={isCurrentPath(link.href, pathname)}
+                className="block py-3"
+                onClick={closeMenu}
+              >
+                {link.label}
+              </NavAnchor>
+            </li>
+          ))}
+        </ul>
+      </nav>
     </header>
+  );
+}
+
+function NavAnchor({
+  href,
+  current,
+  className,
+  onClick,
+  children,
+}: {
+  href: string;
+  current: boolean;
+  className?: string;
+  onClick?: () => void;
+  children: ReactNode;
+}) {
+  const classes = cn(
+    "text-sm tracking-wide whitespace-nowrap text-orchard transition-colors hover:text-kinnow focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-orchard",
+    current ? "font-semibold" : "font-medium",
+    className,
+  );
+
+  if (href === "#") {
+    return (
+      <a href="#" className={classes} onClick={onClick}>
+        {children}
+      </a>
+    );
+  }
+
+  return (
+    <Link
+      href={href}
+      className={classes}
+      aria-current={current ? "page" : undefined}
+      onClick={onClick}
+    >
+      {children}
+    </Link>
   );
 }
