@@ -8,6 +8,17 @@ export const CRATE_GRAPHIC = {
   alt: "Zarbagh kraft crate: Bhalwal’s finest premium fruits",
 } as const;
 
-export const HERO_GROVE = {
-  src: `${basePath}/images/bagh.jpeg`,
-} as const;
+export const HERO_SLIDES = [
+  {
+    src: `${basePath}/images/hero-zarbagh-box.jpg`,
+    width: 2000,
+    height: 1000,
+    alt: "From our orchards to your table — Zarbagh citrus crate. Shop now.",
+  },
+  {
+    src: `${basePath}/images/hero-mixed-citrus.jpg`,
+    width: 2000,
+    height: 1000,
+    alt: "From our orchards to your table — mixed citrus. Shop now.",
+  },
+] as const;
