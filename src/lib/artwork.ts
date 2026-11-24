@@ -15,10 +15,8 @@ export const HERO_SLIDES = [
     height: 1000,
     alt: "From our orchards to your table — Zarbagh citrus crate.",
     cta: {
-      left: "5.6%",
-      top: "68.4%",
-      minWidth: "19%",
-      minHeight: "15%",
+      left: "6.8%",
+      top: "70.8%",
     },
   },
   {
@@ -27,10 +25,8 @@ export const HERO_SLIDES = [
     height: 1000,
     alt: "From our orchards to your table — mixed citrus.",
     cta: {
-      left: "5.6%",
-      top: "62.6%",
-      minWidth: "17.5%",
-      minHeight: "14%",
+      left: "6.8%",
+      top: "65.0%",
     },
   },
 ] as const;
