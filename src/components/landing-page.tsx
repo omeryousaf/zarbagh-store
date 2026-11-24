@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { CrateGraphic } from "@/components/crate-graphic";
+import { HeroSlider } from "@/components/hero-slider";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { HERO_GROVE } from "@/lib/artwork";
 import { formatPkr } from "@/lib/format";
 import { featuredProducts } from "@/lib/products";
 
@@ -40,41 +40,7 @@ export function LandingPage() {
     <div className="flex min-h-full flex-col">
       <SiteHeader />
 
-      <section
-        className="hero-grove relative flex min-h-[calc(100svh-3.75rem)] items-end overflow-hidden sm:items-center"
-        style={{ backgroundImage: `url(${HERO_GROVE.src})` }}
-      >
-        <div
-          className="absolute inset-0 bg-[linear-gradient(90deg,oklch(0.90_0.038_82_/_0.90)_0%,oklch(0.90_0.038_82_/_0.74)_42%,oklch(0.90_0.038_82_/_0.42)_100%)]"
-          aria-hidden
-        />
-        <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col gap-5 px-6 py-16 sm:px-8 sm:py-24">
-          <p className="text-sm text-muted-foreground">
-            Winter kinnow · Sargodha belt
-          </p>
-          <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-balance sm:text-6xl">
-            Kinnow worth putting in a bowl.
-          </h1>
-          <p className="max-w-xl text-base leading-7 text-foreground/80 sm:text-lg">
-            Zarbagh packs Grade A table fruit and juice crates the same week
-            they leave the grove. Thin peel, heavy juice, a sweet-tart bite —
-            the King × Willow Leaf mandarin Punjab waits for each December.
-          </p>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-            <Button size="lg" className="h-12 px-6 text-base" asChild>
-              <Link href="/shop">Shop kinnow</Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="h-12 px-6 text-base"
-              asChild
-            >
-              <Link href="#story">Read the grove story</Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+      <HeroSlider />
 
       <section id="story" className="bg-paper">
         <div className="mx-auto grid w-full max-w-5xl gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:items-center lg:py-24">

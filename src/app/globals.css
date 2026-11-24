@@ -146,9 +146,3 @@
     @apply bg-background text-foreground;
   }
 }
-
-.hero-grove {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
