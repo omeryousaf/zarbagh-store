@@ -13,12 +13,24 @@ export const HERO_SLIDES = [
     src: `${basePath}/images/hero-zarbagh-box.jpg`,
     width: 2000,
     height: 1000,
-    alt: "From our orchards to your table — Zarbagh citrus crate. Shop now.",
+    alt: "From our orchards to your table — Zarbagh citrus crate.",
+    cta: {
+      left: "7.85%",
+      top: "72.7%",
+      width: "15.5%",
+      height: "9.4%",
+    },
   },
   {
     src: `${basePath}/images/hero-mixed-citrus.jpg`,
     width: 2000,
     height: 1000,
-    alt: "From our orchards to your table — mixed citrus. Shop now.",
+    alt: "From our orchards to your table — mixed citrus.",
+    cta: {
+      left: "7.8%",
+      top: "66.9%",
+      width: "13.65%",
+      height: "8.2%",
+    },
   },
 ] as const;
