@@ -69,17 +69,15 @@ export function HeroSlider() {
                 draggable={false}
                 className="pointer-events-none h-full w-full object-cover object-left select-none"
               />
-              <Link
-                href="/shop"
-                tabIndex={active ? 0 : -1}
-                className="absolute z-10 inline-flex items-center justify-center whitespace-nowrap rounded-full bg-orchard px-4 py-2 text-[clamp(0.6875rem,1.8vw,0.9375rem)] font-semibold tracking-[0.12em] text-white uppercase before:absolute before:-inset-4 before:content-[''] hover:bg-orchard/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:px-5 sm:py-2.5"
-                style={{
-                  left: slide.cta.left,
-                  top: slide.cta.top,
-                }}
-              >
-                Shop Now
-              </Link>
+              <div className="absolute inset-y-0 left-0 z-10 flex w-[46%] items-end px-[6.5%] pb-[16%] sm:items-center sm:pb-0 sm:pt-[20%]">
+                <Link
+                  href="/shop"
+                  tabIndex={active ? 0 : -1}
+                  className="inline-flex items-center justify-center whitespace-nowrap rounded-full bg-orchard px-4 py-2 text-[clamp(0.6875rem,1.8vw,0.9375rem)] font-semibold tracking-[0.12em] text-white uppercase hover:bg-orchard/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white sm:px-5 sm:py-2.5"
+                >
+                  Shop Now
+                </Link>
+              </div>
             </div>
           );
         })}

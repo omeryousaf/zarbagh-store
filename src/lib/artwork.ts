@@ -17,20 +17,12 @@ export const HERO_SLIDES = [
     width: heroZarbaghBox.width,
     height: heroZarbaghBox.height,
     alt: "From our orchards to your table — Zarbagh citrus crate.",
-    cta: {
-      left: "6.8%",
-      top: "70.8%",
-    },
   },
   {
     src: heroMixedCitrus.src,
     width: heroMixedCitrus.width,
     height: heroMixedCitrus.height,
     alt: "From our orchards to your table — mixed citrus.",
-    cta: {
-      left: "6.8%",
-      top: "65.0%",
-    },
   },
 ] as const;
 
