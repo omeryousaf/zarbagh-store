@@ -1,18 +1,21 @@
-/** Served copies. Source files stay in repo-root `images/`. */
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+import boxJpeg from "@/assets/box.jpeg";
+import heroMixedCitrus from "@/assets/hero-mixed-citrus.jpg";
+import heroZarbaghBox from "@/assets/hero-zarbagh-box.jpg";
+
+/** Marketing photos are statically imported from `src/assets/` so a missing file fails the build and a replacement gets a new hashed URL. Source files stay in repo-root `images/`. */
 
 export const CRATE_GRAPHIC = {
-  src: `${basePath}/images/box.jpeg`,
-  width: 738,
-  height: 577,
+  src: boxJpeg.src,
+  width: boxJpeg.width,
+  height: boxJpeg.height,
   alt: "Zarbagh kraft crate: Bhalwal’s finest premium fruits",
 } as const;
 
 export const HERO_SLIDES = [
   {
-    src: `${basePath}/images/hero-zarbagh-box.jpg`,
-    width: 2000,
-    height: 1000,
+    src: heroZarbaghBox.src,
+    width: heroZarbaghBox.width,
+    height: heroZarbaghBox.height,
     alt: "From our orchards to your table — Zarbagh citrus crate.",
     cta: {
       left: "6.8%",
@@ -20,9 +23,9 @@ export const HERO_SLIDES = [
     },
   },
   {
-    src: `${basePath}/images/hero-mixed-citrus.jpg`,
-    width: 2000,
-    height: 1000,
+    src: heroMixedCitrus.src,
+    width: heroMixedCitrus.width,
+    height: heroMixedCitrus.height,
     alt: "From our orchards to your table — mixed citrus.",
     cta: {
       left: "6.8%",
