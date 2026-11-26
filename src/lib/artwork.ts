@@ -1,6 +1,10 @@
 import boxJpeg from "@/assets/box.jpeg";
 import heroMixedCitrus from "@/assets/hero-mixed-citrus.jpg";
 import heroZarbaghBox from "@/assets/hero-zarbagh-box.jpg";
+import orchardIntro from "@/assets/orchard-1200x800.jpg";
+import shopKinnow48 from "@/assets/shop-kinnow-48.jpg";
+import shopKinnow54 from "@/assets/shop-kinnow-54.jpg";
+import shopKinnow60 from "@/assets/shop-kinnow-60.jpg";
 
 /** Marketing photos are statically imported from `src/assets/` so a missing file fails the build and a replacement gets a new hashed URL. Source files stay in repo-root `images/`. */
 
@@ -27,29 +31,29 @@ export const HERO_SLIDES = [
 ] as const;
 
 export const ORCHARD_INTRO = {
-  src: `${basePath}/images/orchard-1200x800.jpg`,
-  width: 1200,
-  height: 800,
+  src: orchardIntro.src,
+  width: orchardIntro.width,
+  height: orchardIntro.height,
   alt: "Rows of kinnow trees in a Bhalwal orchard",
 } as const;
 
 export const SHOP_BANNERS = {
   large: {
-    src: `${basePath}/images/shop-kinnow-48.jpg`,
-    width: 1080,
-    height: 1080,
+    src: shopKinnow48.src,
+    width: shopKinnow48.width,
+    height: shopKinnow48.height,
     alt: "Kinnow Box: Large, 48 count",
   },
   medium: {
-    src: `${basePath}/images/shop-kinnow-54.jpg`,
-    width: 1080,
-    height: 1080,
+    src: shopKinnow54.src,
+    width: shopKinnow54.width,
+    height: shopKinnow54.height,
     alt: "Kinnow Box: Medium, 54 count",
   },
   regular: {
-    src: `${basePath}/images/shop-kinnow-60.jpg`,
-    width: 1080,
-    height: 1080,
+    src: shopKinnow60.src,
+    width: shopKinnow60.width,
+    height: shopKinnow60.height,
     alt: "Kinnow Box: Regular, 60 count",
   },
 } as const;
