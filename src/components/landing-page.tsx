@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { AddToCartButton } from "@/components/add-to-cart-button";
 import { CrateGraphic } from "@/components/crate-graphic";
 import { HeroSlider } from "@/components/hero-slider";
 import { SiteFooter } from "@/components/site-footer";
@@ -8,11 +9,11 @@ import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { ORCHARD_INTRO } from "@/lib/artwork";
 import { formatPkr } from "@/lib/format";
 import { featuredProducts } from "@/lib/products";
 
@@ -43,79 +44,84 @@ export function LandingPage() {
       <HeroSlider />
 
       <section id="story" className="bg-paper">
-        <div className="mx-auto grid w-full max-w-5xl gap-12 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:items-center lg:py-24">
+        <div className="mx-auto grid w-full max-w-5xl gap-10 px-6 py-20 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-14 lg:py-24">
           <div className="flex flex-col gap-4">
-            <p className="text-sm text-muted-foreground">Our groves</p>
-            <h2 className="text-3xl font-semibold tracking-tight">
-              A packing table at the edge of the kinnow belt.
+            <p className="text-[0.7rem] font-medium tracking-[0.28em] text-leaf uppercase">
+              Since 1980 · Qudratabad, Bhalwal
+            </p>
+            <h2 className="font-display text-3xl font-semibold tracking-tight text-balance sm:text-4xl">
+              Bhalwal&apos;s finest, gifted beautifully
             </h2>
             <p className="text-base leading-7 text-muted-foreground">
-              Zarbagh buys from growers along the canal-fed orchards of Sargodha
-              district. Kinnow only tastes like itself for a short winter:
-              mid-December through February, when the rind thins and the juice
-              runs. We grade by hand — even fruit for the table, smaller or
-              marked fruit for the press — and crate for kitchens, not for a
-              cold-store that sits until March.
+              For more than four decades our family orchard has grown kinnows in
+              the heart of Punjab&apos;s citrus belt. Picked at their best,
+              graded by size and packed in boxes made to protect them and to be
+              gifted.
             </p>
-            <p className="text-base leading-7 text-muted-foreground">
-              The work is ordinary on purpose: wash, sort, weigh, nail the crate.
-              What we will not do is sell “mixed” as Grade A, or stretch the
-              season with fruit that has gone puffy. When the flush ends, we
-              stop.
-            </p>
+            <a
+              href="#"
+              className="w-fit text-sm font-medium text-orchard underline-offset-4 hover:text-kinnow hover:underline"
+            >
+              Read our story →
+            </a>
           </div>
-          <aside className="rounded-xl bg-background p-6 sm:p-8">
-            <p className="text-lg font-medium tracking-tight">
-              High juice, thin peel, a clean pull of the skin.
-            </p>
-            <p className="mt-3 text-sm leading-6 text-muted-foreground">
-              Kinnow is a mandarin hybrid, not a sweet orange. Households in
-              Punjab press it at breakfast and peel it after dinner. A 10 kg
-              family crate is about a week for a house that actually eats fruit.
-            </p>
-          </aside>
+          <img
+            src={ORCHARD_INTRO.src}
+            alt={ORCHARD_INTRO.alt}
+            width={ORCHARD_INTRO.width}
+            height={ORCHARD_INTRO.height}
+            decoding="async"
+            className="h-auto w-full rounded-xl object-cover"
+          />
         </div>
       </section>
 
       <section className="bg-background">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-10 px-6 py-20 sm:px-8">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <p className="text-sm text-muted-foreground">Featured packs</p>
-              <h2 className="text-3xl font-semibold tracking-tight">
-                Start with a crate.
-              </h2>
-            </div>
-            <Button variant="outline" asChild>
-              <Link href="/shop">See every pack</Link>
-            </Button>
+          <div className="flex flex-col gap-2">
+            <h2 className="font-display text-3xl font-semibold tracking-tight">
+              Shop the season
+            </h2>
+            <p className="text-base text-muted-foreground">
+              Three box sizes. Same Bhalwal kinnows.
+            </p>
           </div>
           <div className="grid gap-6 md:grid-cols-3">
             {featuredProducts.map((product) => (
               <Card key={product.id} className="h-full bg-paper pt-0">
-                <CrateGraphic
-                  className="border-b border-border/70 bg-paper"
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                />
-                <CardHeader>
-                  <p className="text-sm text-muted-foreground">
-                    {product.grade} · {product.pack}
-                  </p>
-                  <CardTitle className="text-lg">{product.name}</CardTitle>
-                  <CardDescription>{product.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-2xl font-semibold tracking-tight text-primary">
-                    {formatPkr(product.pricePkr)}
-                    <span className="ml-1 text-sm font-normal text-muted-foreground">
-                      / {product.unitLabel}
-                    </span>
-                  </p>
-                </CardContent>
+                <Link
+                  href="/shop"
+                  className="flex flex-1 flex-col rounded-t-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orchard"
+                >
+                  {product.image ? (
+                    <img
+                      src={product.image.src}
+                      alt={product.image.alt}
+                      width={product.image.width}
+                      height={product.image.height}
+                      decoding="async"
+                      className="aspect-square w-full object-cover"
+                    />
+                  ) : (
+                    <CrateGraphic
+                      className="border-b border-border/70 bg-paper"
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  )}
+                  <CardHeader>
+                    <CardTitle className="text-lg">{product.name}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-2xl font-semibold tracking-tight text-primary">
+                      {formatPkr(product.pricePkr)}
+                    </p>
+                  </CardContent>
+                </Link>
                 <CardFooter>
-                  <Button className="w-full" asChild>
-                    <Link href="/shop">Shop this pack</Link>
-                  </Button>
+                  <AddToCartButton
+                    productId={product.id}
+                    productName={product.name}
+                  />
                 </CardFooter>
               </Card>
             ))}

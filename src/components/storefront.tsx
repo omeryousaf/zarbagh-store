@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type FormEvent } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 
 import {
   CheckoutForm,
@@ -20,6 +20,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { readStoredCart, writeStoredCart } from "@/lib/cart-storage";
 import { formatPkr } from "@/lib/format";
 import {
   cartTotal,
@@ -45,9 +46,22 @@ type StorefrontProps = {
 
 export function Storefront({ products }: StorefrontProps) {
   const [lines, setLines] = useState<CartLine[]>([]);
+  const [cartReady, setCartReady] = useState(false);
   const [form, setForm] = useState<CheckoutValues>(emptyForm);
   const [errors, setErrors] = useState<CheckoutErrors>({});
   const [order, setOrder] = useState<PlacedOrder | null>(null);
+
+  useEffect(() => {
+    setLines(readStoredCart());
+    setCartReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!cartReady) {
+      return;
+    }
+    writeStoredCart(lines);
+  }, [cartReady, lines]);
 
   const itemCount = lines.reduce((sum, line) => sum + line.qty, 0);
   const total = useMemo(() => cartTotal(lines), [lines]);
