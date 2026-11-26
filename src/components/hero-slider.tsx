@@ -69,7 +69,7 @@ export function HeroSlider() {
                 draggable={false}
                 className="pointer-events-none h-full w-full object-cover object-left select-none"
               />
-              <div className="absolute inset-y-0 left-0 z-10 flex w-[46%] items-end px-[6.5%] pb-[16%] sm:items-center sm:pb-0 sm:pt-[20%]">
+              <div className="absolute bottom-4 left-0 z-10 px-[6.5%] sm:bottom-[100px]">
                 <Link
                   href="/shop"
                   tabIndex={active ? 0 : -1}
