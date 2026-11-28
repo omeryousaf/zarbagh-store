@@ -15,8 +15,8 @@ export function SiteFooter() {
           </Link>
         </p>
         <p>
-          First slice: local order confirmation only. No login, database, or
-          payments.
+          No payment on this site. Seasonal kinnow from Bhalwal — confirm by
+          WhatsApp or phone.
         </p>
       </div>
     </footer>

@@ -149,8 +149,8 @@ export function LandingPage() {
               The crate is the product.
             </h2>
             <p className="mt-2 text-sm leading-6 text-muted-foreground">
-              Open the shop to set quantities, add a delivery address, and
-              confirm the order on-screen. Nothing is charged in this slice.
+              Open the shop to pack a crate, add a delivery address, and send
+              the packing slip on WhatsApp. Nothing is charged on this site.
             </p>
           </div>
           <Button size="lg" className="h-12 px-6 text-base" asChild>

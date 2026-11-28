@@ -1,6 +1,6 @@
 # Zarbagh store
 
-A first-slice website for buying kinnow (citrus) from **Zarbagh**. The home page is a marketing landing; the shop is where buyers browse packs, add quantities to a cart, and confirm an order on-screen. There is no login, database, or payment — the confirmation stays in the browser.
+A website for buying kinnow (citrus) from **Zarbagh**. The home page is a marketing landing; the shop is where buyers pack a cart and send a packing slip on WhatsApp. There is no login, database, or payment on the site.
 
 Open this folder in Cursor or VS Code:
 
@@ -28,10 +28,13 @@ Live site: [https://zarbaghpk.com/](https://zarbaghpk.com/) (GitHub Pages custom
 
 Pushes to `main` build a static export on GitHub Actions and deploy to Pages. If the site is 404, open the repo **Settings → Pages** and set **Source** to **GitHub Actions**.
 
+To enable **Send to Zarbagh on WhatsApp**, set the repo secret `NEXT_PUBLIC_ZARBAGH_WHATSAPP` (digits with country code, e.g. `923001234567`) and locally `NEXT_PUBLIC_ZARBAGH_WHATSAPP` in `.env.local`. Without it, Place order still builds the packing slip.
+
 ## What this slice includes
 
-- Marketing home in the spirit of a farm shop: full-bleed grove hero, grower story, featured crates, trust row, then into the shop
+- Marketing home in the spirit of a farm shop: full-bleed grove hero, grower story, featured crates, then into the shop
 - Catalogue of loose kilograms, gift and family crates, a juice crate, and an export-grade pack, with prices in PKR
-- Cart with quantity edits
-- Checkout form: name, Pakistani mobile number, delivery address (quantities come from the cart)
-- Empty cart, invalid form, and success confirmation states, on desktop and mobile
+- Cart with quantity edits and pack thumbnails
+- Checkout: name, Pakistani mobile, optional email, city, address, rider note, and how they will settle
+- Packing slip and WhatsApp send (see [issue #6](https://github.com/omeryousaf/zarbagh-store/issues/6))
+- Empty cart, invalid form, and success states, on desktop and mobile

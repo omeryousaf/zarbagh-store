@@ -25,10 +25,14 @@ import { formatPkr } from "@/lib/format";
 import {
   cartTotal,
   clampQty,
+  isCityOption,
   isValidAddress,
+  isValidEmail,
   isValidName,
   isValidPkMobile,
   makeOrderId,
+  OTHER_CITY,
+  settleOption,
   type CartLine,
   type PlacedOrder,
 } from "@/lib/order";
@@ -37,7 +41,12 @@ import { getProduct, type Product } from "@/lib/products";
 const emptyForm: CheckoutValues = {
   name: "",
   phone: "",
+  email: "",
+  city: "",
+  otherCity: "",
   address: "",
+  note: "",
+  settle: "cod",
 };
 
 type StorefrontProps = {
@@ -107,8 +116,19 @@ export function Storefront({ products }: StorefrontProps) {
     if (!isValidPkMobile(form.phone)) {
       next.phone = "Use a Pakistani mobile number such as 03001234567.";
     }
+    if (!isValidEmail(form.email)) {
+      next.email = "Enter an email like name@domain, or leave this blank.";
+    }
+    if (!isCityOption(form.city)) {
+      next.city = "Choose a city or area.";
+    } else if (form.city === OTHER_CITY && form.otherCity.trim().length < 2) {
+      next.otherCity = "Name the city in Punjab.";
+    }
     if (!isValidAddress(form.address)) {
-      next.address = "Add a fuller address (house, street, and city).";
+      next.address = "Add a fuller address (house, street, and area).";
+    }
+    if (!settleOption(form.settle)) {
+      next.settle = "Choose how you will settle.";
     }
     return next;
   }
@@ -135,11 +155,20 @@ export function Storefront({ products }: StorefrontProps) {
       ];
     });
 
+    const email = form.email.trim();
+    const note = form.note.trim();
+    const city =
+      form.city === OTHER_CITY ? form.otherCity.trim() : form.city;
+
     setOrder({
       id: makeOrderId(),
       name: form.name.trim(),
       phone: form.phone.replace(/[\s-]/g, ""),
+      ...(email ? { email } : {}),
+      city,
       address: form.address.trim(),
+      ...(note ? { note } : {}),
+      settle: form.settle as PlacedOrder["settle"],
       items,
       totalPkr: cartTotal(lines),
       placedAt: new Date().toISOString(),
@@ -168,9 +197,9 @@ export function Storefront({ products }: StorefrontProps) {
                 Shop kinnow crates and kilos.
               </h1>
               <p className="max-w-2xl text-base leading-7 text-muted-foreground">
-                Prices in Pakistani rupees. Set a quantity on each pack, then
-                confirm name, phone, and a delivery address. This slice keeps the
-                order in the browser.
+                Prices in Pakistani rupees. Pack a crate, add a delivery point,
+                and send the packing slip on WhatsApp. No payment is taken on
+                this site — Zarbagh confirms before the fruit leaves Bhalwal.
               </p>
             </section>
 
@@ -191,58 +220,68 @@ export function Storefront({ products }: StorefrontProps) {
           className="bg-background px-6 py-10 sm:px-8 lg:px-6"
         >
           <div className="flex flex-col gap-4 lg:sticky lg:top-20">
-          <Card className="bg-paper">
-            <CardHeader>
-              <CardTitle>Your cart</CardTitle>
-              <CardDescription>
-                {itemCount === 0
-                  ? "Nothing packed yet."
-                  : `${itemCount} item${itemCount === 1 ? "" : "s"} · ${formatPkr(total)}`}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {order ? null : (
-                <CartPanel
-                  lines={lines}
-                  onQtyChange={setLineQty}
-                  onRemove={removeLine}
-                />
-              )}
-            </CardContent>
-          </Card>
+            <Card className="bg-paper">
+              <CardHeader>
+                <CardTitle>Your cart</CardTitle>
+                <CardDescription>
+                  {order
+                    ? "Packed. See the slip below."
+                    : itemCount === 0
+                      ? "Nothing packed yet."
+                      : `${itemCount} item${itemCount === 1 ? "" : "s"} · ${formatPkr(total)}`}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {order ? null : (
+                  <CartPanel
+                    lines={lines}
+                    onQtyChange={setLineQty}
+                    onRemove={removeLine}
+                  />
+                )}
+              </CardContent>
+            </Card>
 
-          <Card className="bg-paper">
-            <CardHeader>
-              <CardTitle>{order ? "Order received" : "Checkout"}</CardTitle>
-              <CardDescription>
-                {order
-                  ? "Keep this confirmation — it is only on this device."
-                  : "Name, phone, delivery address, and the quantities in your cart."}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              {order ? (
-                <OrderSuccess order={order} onShopAgain={shopAgain} />
-              ) : (
-                <CheckoutForm
-                  values={form}
-                  errors={errors}
-                  cartEmpty={lines.length === 0}
-                  lines={lines}
-                  onChange={(field, value) => {
-                    setForm((current) => ({ ...current, [field]: value }));
-                    setErrors((current) => {
-                      const next = { ...current };
-                      delete next[field];
-                      delete next.cart;
-                      return next;
-                    });
-                  }}
-                  onSubmit={placeOrder}
-                />
-              )}
-            </CardContent>
-          </Card>
+            <Card className="bg-paper">
+              <CardHeader>
+                <CardTitle>{order ? "Order received" : "Checkout"}</CardTitle>
+                <CardDescription>
+                  {order
+                    ? "Keep this packing slip, then send it on WhatsApp."
+                    : "Name, phone, city, and delivery address. Quantities come from your cart."}
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                {order ? (
+                  <OrderSuccess order={order} onShopAgain={shopAgain} />
+                ) : (
+                  <CheckoutForm
+                    values={form}
+                    errors={errors}
+                    cartEmpty={lines.length === 0}
+                    onChange={(field, value) => {
+                      setForm((current) => ({
+                        ...current,
+                        [field]: value,
+                        ...(field === "city" && value !== OTHER_CITY
+                          ? { otherCity: "" }
+                          : {}),
+                      }));
+                      setErrors((current) => {
+                        const next = { ...current };
+                        delete next[field];
+                        delete next.cart;
+                        if (field === "city") {
+                          delete next.otherCity;
+                        }
+                        return next;
+                      });
+                    }}
+                    onSubmit={placeOrder}
+                  />
+                )}
+              </CardContent>
+            </Card>
           </div>
         </aside>
       </main>
