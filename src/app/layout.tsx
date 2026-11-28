@@ -20,7 +20,7 @@ const cinzel = Cinzel({
 export const metadata: Metadata = {
   title: "Zarbagh — fresh kinnow crates",
   description:
-    "Zarbagh packs Grade A and juice-grade kinnow from Punjab’s Sargodha belt. Browse crates and kilograms, fill a cart, and confirm delivery on-screen.",
+    "Zarbagh packs Grade A and juice-grade kinnow from Punjab’s Sargodha belt. Browse crates and kilograms, fill a cart, and send a delivery order on WhatsApp.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

@@ -45,12 +45,23 @@ export function CartPanel({ lines, onQtyChange, onRemove }: CartPanelProps) {
         {resolved.map((line) => (
           <li key={line.productId} className="flex flex-col gap-2">
             <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="font-medium">{line.product.name}</p>
-                <p className="text-sm text-muted-foreground">
-                  {line.product.grade} · {formatPkr(line.product.pricePkr)} /{" "}
-                  {line.product.unitLabel}
-                </p>
+              <div className="flex min-w-0 items-start gap-3">
+                {line.product.image ? (
+                  <img
+                    src={line.product.image.src}
+                    alt={line.product.image.alt}
+                    width={48}
+                    height={48}
+                    className="size-12 shrink-0 rounded-md object-cover"
+                  />
+                ) : null}
+                <div className="min-w-0">
+                  <p className="font-medium">{line.product.name}</p>
+                  <p className="text-sm text-muted-foreground">
+                    {line.product.grade} · {formatPkr(line.product.pricePkr)} /{" "}
+                    {line.product.unitLabel}
+                  </p>
+                </div>
               </div>
               <Button
                 type="button"
